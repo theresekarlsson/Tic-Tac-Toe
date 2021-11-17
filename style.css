@@ -1,11 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Permanent+Marker&display=swap');
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
 }
 
 section {
     text-align: center;
+}
+
+button {
+    all: unset;
+    display: inline-block;
+    padding: 0.5em;
+    border: 0.5px solid #000;
+    border-radius: 0.15em;
+    font-size: 500;
+    color: black;
+    transition: all 0.1s;
+}
+
+button:hover {
+    color: #fff;
+    background-color: #333;
+}
+
+button:active {
+    background-color: #6e6e6e;
 }
 
 .game-container {
@@ -25,4 +45,3 @@ section {
     line-height: 100px;
     font-size: 60px;
 }
-

@@ -23,14 +23,23 @@ const winningConditions = [
 /** Initial message */
 statusDisplay.innerHTML = currentPlayerTurn();
 
+function handleCellClick(clickedCellEvent) {
+    /** Save element */
+    const clickedCell = clickedCellEvent.target;
+    /** Get index from saved element, parse to int*/
+    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
+    /** Check if cell has already been played or game is paused. If true = ignore */
+    
+    if (gameState[clickedCellIndex] !== "" || !gameActive) {
+        return;
+    }
+    handleCellPlayed(clickedCell, clickedCellIndex);
+    handleResultValidation();
+}
+
 function handleCellPlayed(clickedCell, clickedCellIndex) {
     gameState[clickedCellIndex] = currentPlayer;
     clickedCell.innerHTML = currentPlayer;
-}
-
-function handlePlayerChange() {
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
-    statusDisplay.innerHTML = currentPlayerTurn();
 }
 
 function handleResultValidation() {
@@ -66,18 +75,9 @@ function handleResultValidation() {
     handlePlayerChange();
 }
 
-function handleCellClick(clickedCellEvent) {
-    /** Save element */
-    const clickedCell = clickedCellEvent.target;
-    /** Get index from saved element, parse to int*/
-    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
-    /** Check if cell has already been played or game is paused. If true = ignore */
-    
-    if (gameState[clickedCellIndex] !== "" || !gameActive) {
-        return;
-    }
-    handleCellPlayed(clickedCell, clickedCellIndex);
-    handleResultValidation();
+function handlePlayerChange() {
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
+    statusDisplay.innerHTML = currentPlayerTurn();
 }
 
 function handleRestartGame() {
